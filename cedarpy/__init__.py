@@ -459,6 +459,15 @@ def is_authorized_partial(request: dict,
 
     .. warning::
 
+        **Experimental upstream feature.** This function is built on the
+        ``cedar-policy`` crate's ``partial-eval`` feature, which Cedar ships
+        outside its semver guarantee (see Cedar's experimental-features
+        policy). Cedar may change or break it in any release, so a cedarpy
+        minor release may carry breaking changes to this API; the CHANGELOG
+        calls them out when they happen.
+
+    .. warning::
+
         **Partial-eval results MUST NOT be used as a final authorization
         decision.** Treat ``decision == Decision.Allow`` from
         ``is_authorized_partial`` as a *preview* that holds only for the
