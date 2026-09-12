@@ -326,6 +326,8 @@ Because an unlinked template is inert — the authorizer only ever evaluates lin
 
 Sometimes you can't fully evaluate a request up front. A resource entity may not be loaded from the database yet, the caller may not have picked a resource, or `context` may be filled in by a downstream service. `is_authorized_partial` evaluates whatever is known and returns residual policies for the parts that aren't.
 
+> **Experimental upstream feature.** `is_authorized_partial` is built on the `cedar-policy` crate's `partial-eval` feature, which Cedar ships outside its semver guarantee ([Cedar experimental features](https://github.com/cedar-policy/rfcs/blob/main/README.md#experimental-features)). Cedar may change or break it in any release, so a cedarpy minor release may carry breaking changes to this API.
+
 `is_authorized_partial` returns either:
 
 * `Decision.Allow` or `Decision.Deny` when the unknowns can't change the outcome, or

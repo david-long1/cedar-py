@@ -1,5 +1,14 @@
 # Partial Authorization Guide
 
+> [!WARNING]
+> **`is_authorized_partial` exposes an experimental upstream feature.**
+> It is built on the `cedar-policy` crate's `partial-eval` feature, which Cedar
+> ships outside its semver guarantee
+> ([Cedar experimental features](https://github.com/cedar-policy/rfcs/blob/main/README.md#experimental-features)).
+> Cedar may change or break this behavior in any release, including minors.
+> Because cedarpy's major.minor tracks the engine's, a cedarpy minor release may
+> carry breaking changes to this API; the CHANGELOG calls them out when they happen.
+
 Cedar's partial evaluation lets you evaluate authorization requests
 where some information is not yet available.
 Instead of a binary allow/deny,

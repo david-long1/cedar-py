@@ -18,6 +18,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- Documented that `is_authorized_partial` exposes an experimental upstream feature: it is built on the `cedar-policy` crate's `partial-eval` feature, which Cedar ships outside its semver guarantee and may change or break in any release. The partial authorization guide, README section, docstring, and Rust binding now all carry the marker. No behavior change.
+
 - Updated the remaining declared Rust dependencies to their latest patch releases: `pyo3` 0.27.1 → 0.27.2 (crash fix for Rust 1.92+ builds with debug assertions; no API changes), `serde` 1.0.228 → 1.0.229, and `serde_json` 1.0.145 → 1.0.151 (float formatting switched from Ryū to Żmij upstream — output can differ textually while remaining valid; the 60,800-case Cedar corpus passes unchanged). No behavior changes observed across unit, integration, corpus, or benchmark suites.
 
 - Removed the unused `cedar-policy-cli` crate dependency, present since the project's initial scaffold but never referenced from code. Drops 34 transitive crates (`clap`, `miette`'s terminal-support stack, `rustix`, …) from `Cargo.lock`, shrinking build time, audit surface, and the version-resolution coupling its exact `=X.Y.Z` pin on `cedar-policy` imposed. No functional change — `cedar-policy-formatter` (which backs `format_policies`) remains.

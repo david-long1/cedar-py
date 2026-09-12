@@ -1821,6 +1821,11 @@ struct PartialAuthzResponse {
     metrics: HashMap<String, u128>,
 }
 
+/// Partially evaluate an authorization request with unknowns.
+///
+/// Built on the `cedar-policy` crate's `partial-eval` feature, which Cedar
+/// ships outside its semver guarantee (an experimental feature): upstream may
+/// change or break it in any release, including minors.
 #[pyfunction]
 #[pyo3(signature = (request, policies, entities, schema = None, verbose = false))]
 fn is_authorized_partial(
