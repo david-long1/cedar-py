@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [4.12.0] - 2026-09-12
+
 ### Added
 
 - `policies_to_pst(policies)` parses Cedar policy text into typed `cedarpy.pst` nodes, one frozen dataclass per `cedar_policy::pst` node kind, so a consumer can pattern-match on real types instead of an untyped tree keyed by string operators ([#107](https://github.com/k9securityio/cedar-py/issues/107)). Each closed set Cedar defines is closed in the Python type, so a `match` over one can be checked for exhaustiveness. Nodes are frozen, slotted, hashable values, and their mapping fields reject mutation. Static policies and unlinked templates only: a residual from `is_authorized_partial` cannot be represented this way, because PST validates each clause as it is built and rejects any containing an unresolved `unknown(...)` node. The node set tracks the engine: syntax not yet modelled by `cedarpy.pst` raises `ValueError` rather than building an incomplete tree. See the [Policy Syntax Tree Guide](docs/guides/policy-syntax-tree-guide.md) for the node types and the guarantees. ([#108](https://github.com/k9securityio/cedar-py/pull/108)). Thanks [@h0rv](https://github.com/h0rv)!
@@ -125,7 +127,8 @@ Dependency update release. No functional or API changes — Cedar Policy engine 
 
 - Performance regression test suite built on `pytest-benchmark` ([#39](https://github.com/k9securityio/cedar-py/pull/39))
 
-[Unreleased]: https://github.com/k9securityio/cedar-py/compare/v4.8.7...HEAD
+[Unreleased]: https://github.com/k9securityio/cedar-py/compare/v4.12.0...HEAD
+[4.12.0]: https://github.com/k9securityio/cedar-py/compare/v4.8.7...v4.12.0
 [4.8.7]: https://github.com/k9securityio/cedar-py/compare/v4.8.6...v4.8.7
 [4.8.6]: https://github.com/k9securityio/cedar-py/compare/v4.8.5...v4.8.6
 [4.8.5]: https://github.com/k9securityio/cedar-py/compare/v4.8.4...v4.8.5
