@@ -19,7 +19,7 @@
 - `results/current/` — ephemeral per-run JSONs from `run_current.sh` (gitignored, wiped each invocation).
 - `results/history/<state>.json` — per-commit summary (median/max/min/stdev across N runs per benchmark).
 - `results/HISTORY.md` — rendered table view of `results/history/*.json`, one section per benchmark.
-- `results/baseline.json` — symlink to the active baseline (typically `baseline-v4_8_0-median.json`); used by `make benchmark-compare`.
+- `results/baseline.json` — symlink to the active baseline (currently `baseline-v4_12_0-median.json`); used by `make benchmark-compare`.
 
 ## The regression gate
 
